@@ -1,0 +1,344 @@
+/* ============================================================
+   02-media-queries.css
+   Técnica 2: Media Queries
+   ISW-521 — Programación en Ambiente Web I — UTN
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background-color: #f5f6fa;
+}
+
+.page-header {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: #7c3aed;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.page-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #a8b2d8;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* --- Tarjeta de concepto --- */
+.concept-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.concept-card h2,
+.breakpoints-section h2,
+.demo-section h2,
+.types-section h2,
+.code-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1a1a2e;
+}
+
+.concept-card p {
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+  background-color: #f3e8ff;
+  color: #6d28d9;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.code-block {
+  background-color: #1e1e3f;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  background: none;
+  color: #c4b5fd;
+  font-size: 0.85rem;
+  padding: 0;
+  white-space: pre;
+}
+
+/* --- Breakpoints --- */
+.breakpoints {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bp {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.bp-xs  { background: #fef2f2; border-color: #fecaca; }
+.bp-sm  { background: #fff7ed; border-color: #fed7aa; }
+.bp-md  { background: #fefce8; border-color: #fde68a; }
+.bp-lg  { background: #f0fdf4; border-color: #bbf7d0; }
+.bp-xl  { background: #eff6ff; border-color: #bfdbfe; }
+
+.bp-icon {
+  font-size: 1.1rem;
+  min-width: 26px;
+}
+
+.bp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bp-query {
+  font-size: 0.8rem;
+  background: transparent;
+  color: #374151;
+  padding: 0;
+}
+
+.bp-name {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* --- Demo layout responsivo --- */
+.demo-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.section-hint {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.responsive-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px dashed #cbd5e1;
+}
+
+.layout-sidebar {
+  display: none;
+  background: #f3e8ff;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #ddd6fe;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #5b21b6;
+}
+
+.sidebar-note {
+  font-size: 0.75rem;
+  color: #7c3aed;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.layout-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.content-block {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.content-block-a { background: #dbeafe; color: #1e3a8a; }
+.content-block-b { background: #dcfce7; color: #14532d; }
+.content-block-c { background: #fef9c3; color: #713f12; }
+
+/* --- Tipos de media queries --- */
+.types-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.type-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.type-query {
+  display: block;
+  font-size: 0.78rem;
+  color: #6d28d9;
+  background: #f3e8ff;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.type-card p {
+  font-size: 0.85rem;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.page-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+  margin-top: 2rem;
+}
+
+/* ============================================================
+   MEDIA QUERIES — el tema de esta página
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .responsive-layout {
+    flex-direction: row;
+  }
+
+  .layout-sidebar {
+    display: block;
+    width: 180px;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  .layout-main {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .content-block {
+    flex: 1 1 100px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-sidebar {
+    width: 220px;
+  }
+  .content-block {
+    flex: 1 0 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .types-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0f0f1a;
+    color: #e2e8f0;
+  }
+
+  .concept-card,
+  .demo-section,
+  .type-card,
+  .page-footer {
+    background-color: #1e1e2e;
+    border-color: #2d2d44;
+  }
+
+  .concept-card h2,
+  .breakpoints-section h2,
+  .demo-section h2,
+  .types-section h2,
+  .code-section h2 {
+    color: #e2e8f0;
+  }
+
+  .concept-card p,
+  .type-card p,
+  .section-hint {
+    color: #94a3b8;
+  }
+
+  .responsive-layout {
+    background: #1a1a2e;
+    border-color: #3d3d5c;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

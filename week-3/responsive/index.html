@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diseño Responsivo con CSS — ISW-521</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f0f1a;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    .hero {
+      padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #f1f5f9;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: #94a3b8;
+      line-height: 1.65;
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem) clamp(2rem, 6vw, 4rem);
+    }
+
+    .card {
+      background: #1e1e2e;
+      border: 1px solid #2d2d44;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+    }
+
+    .card-num {
+      font-size: 0.72rem;
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+      color: #475569;
+      letter-spacing: 0.06em;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    .card-desc {
+      font-size: 0.83rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .card-files {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .file-pill {
+      font-size: 0.72rem;
+      font-family: 'Courier New', monospace;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .pill-html { background: #1e3a5f; color: #93c5fd; border-color: #1d4ed8; }
+    .pill-css  { background: #1e3a50; color: #67e8f9; border-color: #0e7490; }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #334155;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <p class="hero-kicker">ISW-521 · Programación en Ambiente Web I · UTN</p>
+    <h1>Diseño <span>Responsivo</span><br>con CSS</h1>
+    <p class="hero-desc">
+      Siete técnicas fundamentales explicadas con código HTML y CSS separados,
+      ejemplos interactivos y demos que reaccionan al redimensionamiento del viewport.
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <a class="card" href="01-viewport-meta.html">
+      <span class="card-num">01 / 07</span>
+      <span class="card-title">Viewport Meta Tag</span>
+      <span class="card-desc">El punto de partida obligatorio. Controla cómo los navegadores móviles interpretan el ancho de pantalla.</span>
+      <div class="card-files">
+        <span class="file-pill pill-html">01-viewport-meta.html</span>
+        <span class="file-pill pill-css">.css</span>
+      </div>
+    </a>
+
+    <a class="card" href="02-media-queries.html">
+      <span class="card-num">02 / 07</span>
+      <span class="card-title">Media Queries</span>
+      <span class="card-desc">Aplica estilos condicionalmente según ancho, orientación y preferencias del sistema operativo.</span>
+      <div class="card-files">
+        <span class="file-pill pill-html">02-media-queries.html</span>
+        <span class="file-pill pill-css">.css</span>
+      </div>
+    </a>
+
+    <a class="card" href="03-mobile-first.html">
+      <span class="card-num">03 / 07</span>
+      <span class="card-title">Estrategia Mobile-First</span>
+      <span class="card-desc">Escribe estilos base para móvil y agrega capas con min-width. Más eficiente que el enfoque desktop-first.</span>
+      <div class="card-files">
+        <span class="file-pill pill-html">03-mobile-first.html</span>
+        <span class="file-pill pill-css">.css</span>
+      </div>
+    </a>
+
+    <a class="card" href="04-flexbox-responsivo.html">
+      <span class="card-num">04 / 07</span>
+      <span class="card-title">Flexbox Responsivo</span>
+      <span class="card-desc">flex-wrap y flex-basis crean layouts que se redistribuyen automáticamente sin media queries adicionales.</span>
+      <div class="card-files">
+        <span class="file-pill pill-html">04-flexbox-responsivo.html</span>
+        <span class="file-pill pill-css">.css</span>
+      </div>
+    </a>
+
+    <a class="card" href="05-css-grid-responsivo.html">
+      <span class="card-num">05 / 07</span>
+      <span class="card-title">CSS Grid Responsivo</span>
+      <span class="card-desc">auto-fit + minmax genera columnas automáticas. grid-template-areas reorganiza secciones completas en móvil.</span>
+      <div class="card-files">
+        <span class="file-pill pill-html">05-css-grid-responsivo.html</span>
+        <span class="file-pill pill-css">.css</span>
+      </div>
+    </a>
+
+    <a class="card" href="06-tipografia-fluida.html">
+      <span class="card-num">06 / 07</span>
+      <span class="card-title">Tipografía Fluida</span>
+      <span class="card-desc">clamp(min, ideal, max) escala textos y espaciados de forma continua entre dos extremos, sin saltos abruptos.</span>
+      <div class="card-files">
+        <span class="file-pill pill-html">06-tipografia-fluida.html</span>
+        <span class="file-pill pill-css">.css</span>
+      </div>
+    </a>
+
+    <a class="card" href="07-imagenes-responsivas.html">
+      <span class="card-num">07 / 07</span>
+      <span class="card-title">Imágenes Responsivas</span>
+      <span class="card-desc">max-width, object-fit, aspect-ratio y srcset para imágenes que escalan, recortan y cargan la resolución correcta.</span>
+      <div class="card-files">
+        <span class="file-pill pill-html">07-imagenes-responsivas.html</span>
+        <span class="file-pill pill-css">.css</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer class="footer">
+    <p>ISW-521 · Programación en Ambiente Web I · UTN · 15 archivos — 7 HTML + 7 CSS + 1 índice</p>
+  </footer>
+
+</body>
+</html>

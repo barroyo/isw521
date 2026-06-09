@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Técnica 6 — Tipografía Fluida</title>
+  <link rel="stylesheet" href="06-tipografia-fluida.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="header-inner">
+      <span class="badge">Técnica 6 / 7</span>
+      <h1>Tipografía Fluida</h1>
+      <p class="subtitle">Escala continua con clamp() sin puntos de quiebre artificiales</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="concept-card">
+      <h2>La función clamp()</h2>
+      <p>
+        <code>clamp(mínimo, valor-ideal, máximo)</code> devuelve el valor ideal
+        mientras esté entre el mínimo y el máximo. Combinando el valor ideal con
+        unidades relativas al viewport (<code>vw</code>), el resultado escala
+        fluidamente según el ancho de la pantalla.
+      </p>
+      <pre class="code-block"><code>font-size: clamp(1rem, 2.5vw, 2rem);
+/*              ↑         ↑       ↑
+                mínimo  ideal   máximo
+                16px    fluido  32px  */</code></pre>
+    </section>
+
+    <section class="demo-section">
+      <h2>Demo: tipografía que escala con el viewport</h2>
+      <p class="section-hint">Redimensiona la ventana para ver la escala fluida.</p>
+
+      <article class="article-demo">
+        <h1 class="fluid-h1">Título principal fluido</h1>
+        <h2 class="fluid-h2">Subtítulo fluido de sección</h2>
+        <p class="fluid-body">
+          Este párrafo usa <code>clamp()</code> para escalar su tamaño de fuente
+          y su interlineado de forma continua. No hay saltos abruptos entre
+          tamaños — la transición es suave en cualquier viewport entre móvil y
+          escritorio amplio.
+        </p>
+      </article>
+    </section>
+
+    <section class="scale-section">
+      <h2>Escala tipográfica completa con clamp()</h2>
+      <div class="scale-table">
+        <div class="scale-row scale-row--header">
+          <span>Elemento</span>
+          <span>CSS</span>
+          <span>Rango</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-sample scale-h1">H1</span>
+          <code>clamp(1.75rem, 4vw, 3rem)</code>
+          <span class="scale-range">28px → 48px</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-sample scale-h2">H2</span>
+          <code>clamp(1.35rem, 3vw, 2.25rem)</code>
+          <span class="scale-range">22px → 36px</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-sample scale-h3">H3</span>
+          <code>clamp(1.1rem, 2vw, 1.5rem)</code>
+          <span class="scale-range">18px → 24px</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-sample scale-p">Párrafo</span>
+          <code>clamp(0.9rem, 1.5vw, 1.125rem)</code>
+          <span class="scale-range">14px → 18px</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-sample scale-small">Pequeño</span>
+          <code>clamp(0.75rem, 1vw, 0.875rem)</code>
+          <span class="scale-range">12px → 14px</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="spacing-section">
+      <h2>Espaciado fluido</h2>
+      <p class="section-desc">
+        <code>clamp()</code> no solo aplica a tipografía. También funciona para
+        padding, margin y cualquier propiedad de longitud.
+      </p>
+      <pre class="code-block"><code>.section {
+  /* padding que escala de 1rem a 4rem */
+  padding: clamp(1rem, 5vw, 4rem);
+}
+
+.container {
+  /* ancho máximo centrado con padding fluido */
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.card {
+  /* gap fluido en grid/flex */
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}</code></pre>
+    </section>
+
+    <section class="comparison-section">
+      <h2>clamp() vs múltiples @media</h2>
+      <div class="comparison-grid">
+        <div class="comp-card comp-card--old">
+          <div class="comp-label comp-label--old">Antes — múltiples media queries</div>
+          <pre class="code-block"><code>h1 { font-size: 1.5rem; }
+
+@media (min-width: 480px) {
+  h1 { font-size: 2rem; }
+}
+@media (min-width: 768px) {
+  h1 { font-size: 2.5rem; }
+}
+@media (min-width: 1024px) {
+  h1 { font-size: 3rem; }
+}</code></pre>
+        </div>
+        <div class="comp-card comp-card--new">
+          <div class="comp-label comp-label--new">Ahora — una sola línea</div>
+          <pre class="code-block"><code>h1 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Escala continua y suave
+   entre 1.5rem y 3rem,
+   sin saltos visibles */</code></pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>ISW-521 · Programación en Ambiente Web I · UTN</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Técnica 5 — CSS Grid Responsivo</title>
+  <link rel="stylesheet" href="05-css-grid-responsivo.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="header-inner">
+      <span class="badge">Técnica 5 / 7</span>
+      <h1>CSS Grid Responsivo</h1>
+      <p class="subtitle">Columnas automáticas con auto-fit, minmax y template-areas</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="concept-card">
+      <h2>auto-fit + minmax: columnas sin media queries</h2>
+      <p>
+        La combinación <code>repeat(auto-fit, minmax(min, 1fr))</code> crea tantas
+        columnas como quepan en el contenedor. <code>auto-fit</code> colapsa las
+        columnas vacías para que los ítems se estiren; <code>auto-fill</code> las
+        mantiene reservadas.
+      </p>
+      <pre class="code-block"><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+/* Sin una sola @media query:
+   viewport 400px  → 1 columna
+   viewport 650px  → 2 columnas  (2 × ~200px + gap)
+   viewport 900px  → 3 columnas
+   viewport 1200px → 4+ columnas */</code></pre>
+    </section>
+
+    <section class="demo-autofit">
+      <h2>Demo: auto-fit sin media queries</h2>
+      <p class="section-hint">Redimensiona para ver cómo el grid se reorganiza solo.</p>
+      <div class="auto-grid">
+        <div class="grid-cell cell-a">A</div>
+        <div class="grid-cell cell-b">B</div>
+        <div class="grid-cell cell-c">C</div>
+        <div class="grid-cell cell-d">D</div>
+        <div class="grid-cell cell-e">E</div>
+        <div class="grid-cell cell-f">F</div>
+      </div>
+    </section>
+
+    <section class="demo-areas">
+      <h2>Demo: grid-template-areas (layout semántico)</h2>
+      <p class="section-hint">En pantallas pequeñas el sidebar se mueve debajo del main.</p>
+      <div class="page-areas">
+        <header  class="area area-header">header</header>
+        <nav     class="area area-nav">nav</nav>
+        <main    class="area area-main">main</main>
+        <aside   class="area area-sidebar">sidebar</aside>
+        <footer  class="area area-footer">footer</footer>
+      </div>
+      <pre class="code-block code-block--mt"><code>/* Escritorio */
+.page-areas {
+  grid-template-areas:
+    "header  header"
+    "nav     nav"
+    "main    sidebar"
+    "footer  footer";
+  grid-template-columns: 1fr 220px;
+}
+
+/* Móvil */
+@media (max-width: 680px) {
+  .page-areas {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+    </section>
+
+    <section class="diff-section">
+      <h2>auto-fit vs auto-fill</h2>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <code class="diff-name">auto-fit</code>
+          <div class="diff-visual diff-visual--fit">
+            <div class="dv-cell">A</div>
+            <div class="dv-cell">B</div>
+          </div>
+          <p>Colapsa columnas vacías. Los ítems se estiran para llenar el espacio.</p>
+        </div>
+        <div class="diff-card">
+          <code class="diff-name">auto-fill</code>
+          <div class="diff-visual diff-visual--fill">
+            <div class="dv-cell">A</div>
+            <div class="dv-cell">B</div>
+          </div>
+          <p>Mantiene columnas vacías reservadas. Los ítems no se estiran más allá de su base.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>ISW-521 · Programación en Ambiente Web I · UTN</p>
+  </footer>
+
+</body>
+</html>

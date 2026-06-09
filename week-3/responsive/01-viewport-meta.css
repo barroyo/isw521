@@ -1,0 +1,304 @@
+/* ============================================================
+   01-viewport-meta.css
+   Técnica 1: Viewport Meta Tag
+   ISW-521 — Programación en Ambiente Web I — UTN
+   ============================================================ */
+
+/* --- Reset y base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background-color: #f5f6fa;
+}
+
+/* --- Header --- */
+.page-header {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: #4361ee;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.page-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #a8b2d8;
+}
+
+/* --- Contenedor principal --- */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* --- Sección de concepto --- */
+.concept-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.concept-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1a1a2e;
+}
+
+.concept-card p {
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.875em;
+  background-color: #eef2ff;
+  color: #3730a3;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.code-block {
+  background-color: #1e1e3f;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  background: none;
+  color: #a8d8ff;
+  font-size: 0.85rem;
+  padding: 0;
+}
+
+/* --- Demo grid --- */
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.demo-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.demo-good {
+  border-color: #86efac;
+}
+
+.demo-bad {
+  border-color: #fca5a5;
+}
+
+.demo-label {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.demo-label--good {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.demo-label--bad {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.demo-body {
+  background: #fff;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.demo-desc {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+/* --- Barras de comparación --- */
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bar {
+  height: 10px;
+  border-radius: 5px;
+}
+
+.bar--full {
+  width: 100%;
+  background-color: #22c55e;
+}
+
+.bar--partial {
+  width: 35%;
+  background-color: #ef4444;
+}
+
+.bar-label {
+  font-size: 0.75rem;
+  color: #718096;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* --- Indicadores de viewport --- */
+.viewport-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.vi-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.vi-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #166534;
+  font-weight: 600;
+}
+
+.vi-val--bad {
+  color: #991b1b;
+}
+
+/* --- Sección de parámetros --- */
+.params-section h2,
+.note-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.param-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.param-card--warning {
+  border-color: #fbbf24;
+  background-color: #fffbeb;
+}
+
+.param-name {
+  display: block;
+  font-size: 0.8rem;
+  color: #3730a3;
+  background: #eef2ff;
+  padding: 3px 8px;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.param-card--warning .param-name {
+  color: #92400e;
+  background-color: #fef3c7;
+}
+
+.param-card p {
+  font-size: 0.85rem;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+/* --- Nota práctica --- */
+.note-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 4px solid #4361ee;
+}
+
+.note-section p {
+  font-size: 0.9rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* --- Footer --- */
+.page-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+  margin-top: 2rem;
+}
+
+/* --- Responsividad de la propia página --- */
+@media (max-width: 600px) {
+  .page-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .params-grid {
+    grid-template-columns: 1fr;
+  }
+}

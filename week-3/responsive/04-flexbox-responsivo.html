@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Técnica 4 — Flexbox Responsivo</title>
+  <link rel="stylesheet" href="04-flexbox-responsivo.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="header-inner">
+      <span class="badge">Técnica 4 / 7</span>
+      <h1>Flexbox Responsivo</h1>
+      <p class="subtitle">Distribuye y redistribuye elementos con flex-wrap y valores flex</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="concept-card">
+      <h2>La clave: flex-wrap y flex shorthand</h2>
+      <p>
+        Flexbox se vuelve responsivo combinando <code>flex-wrap: wrap</code>
+        (permite salto de línea) con el shorthand <code>flex: grow shrink basis</code>.
+        El <code>flex-basis</code> actúa como un breakpoint implícito: cuando el
+        elemento no cabe en su base, salta a una nueva línea.
+      </p>
+      <pre class="code-block"><code>.contenedor {
+  display: flex;
+  flex-wrap: wrap;   /* permite que los items salten de línea */
+  gap: 1rem;
+}
+
+.item {
+  flex: 1 1 250px;
+  /*   ↑ ↑ ↑
+       │ │ └── basis: ancho base deseado
+       │ └──── shrink: puede encogerse
+       └────── grow: puede crecer */
+}</code></pre>
+    </section>
+
+    <section class="demo-section">
+      <h2>Demo: tarjetas con flex-wrap</h2>
+      <p class="section-hint">Redimensiona la ventana para ver cómo las tarjetas se redistribuyen.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon card-icon--a">01</div>
+          <h3>Diseño</h3>
+          <p>Wireframes, prototipos, sistemas de diseño y guías de estilo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon--b">02</div>
+          <h3>Desarrollo</h3>
+          <p>HTML semántico, CSS moderno, JavaScript y frameworks.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon--c">03</div>
+          <h3>Pruebas</h3>
+          <p>Testing unitario, integración y pruebas de accesibilidad.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon--d">04</div>
+          <h3>Despliegue</h3>
+          <p>CI/CD, hosting, CDN y monitoreo de rendimiento.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="properties-section">
+      <h2>Propiedades esenciales</h2>
+      <div class="props-grid">
+        <div class="prop-card">
+          <code class="prop-name">flex-wrap: wrap</code>
+          <p>Permite que los ítems salten a la siguiente línea cuando no caben.</p>
+        </div>
+        <div class="prop-card">
+          <code class="prop-name">flex: 1 1 250px</code>
+          <p>El ítem crece, se encoge y tiene una base de 250px. Shorthand de grow, shrink y basis.</p>
+        </div>
+        <div class="prop-card">
+          <code class="prop-name">gap: 1rem</code>
+          <p>Espacio entre ítems tanto en filas como en columnas. Reemplaza márgenes manuales.</p>
+        </div>
+        <div class="prop-card">
+          <code class="prop-name">min-width: 0</code>
+          <p>Evita que el contenido interno desborde cuando el ítem se encoge.</p>
+        </div>
+        <div class="prop-card">
+          <code class="prop-name">align-items: stretch</code>
+          <p>Por defecto, todos los ítems en una fila tienen la misma altura.</p>
+        </div>
+        <div class="prop-card">
+          <code class="prop-name">flex-direction</code>
+          <p>Cambia entre <code>row</code> (horizontal) y <code>column</code> (vertical).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout-demo-section">
+      <h2>Demo: layout header + sidebar + main + footer</h2>
+      <div class="page-layout">
+        <div class="layout-header">Header</div>
+        <div class="layout-body">
+          <aside class="layout-aside">Aside</aside>
+          <main class="layout-content">Main content</main>
+        </div>
+        <div class="layout-footer">Footer</div>
+      </div>
+      <pre class="code-block code-block--spaced"><code>.layout-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.layout-aside {
+  flex: 0 0 200px; /* no crece ni encoge */
+}
+.layout-content {
+  flex: 1 1 300px; /* crece para llenar */
+}
+/* En móvil ambos tienen base < espacio → apilan */</code></pre>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>ISW-521 · Programación en Ambiente Web I · UTN</p>
+  </footer>
+
+</body>
+</html>

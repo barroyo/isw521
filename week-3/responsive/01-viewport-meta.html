@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Técnica 1 — Viewport Meta Tag</title>
+  <link rel="stylesheet" href="01-viewport-meta.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="header-inner">
+      <span class="badge">Técnica 1 / 7</span>
+      <h1>Viewport Meta Tag</h1>
+      <p class="subtitle">El punto de partida obligatorio de todo diseño responsivo</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="concept-card">
+      <h2>¿Qué hace esta meta tag?</h2>
+      <p>
+        Sin el <code>&lt;meta name="viewport"&gt;</code>, los navegadores móviles
+        simulan un viewport de <strong>980px</strong> y reducen toda la página con
+        zoom-out. Con ella, se le indica al navegador que use el ancho real del
+        dispositivo como referencia y no aplique ningún zoom inicial.
+      </p>
+      <pre class="code-block"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+    </section>
+
+    <section class="demo-grid">
+
+      <div class="demo-card demo-good">
+        <div class="demo-label demo-label--good">Con viewport meta</div>
+        <div class="demo-body">
+          <p class="demo-desc">El contenido ocupa el 100% del ancho del dispositivo sin zoom artificial.</p>
+          <div class="bar-group">
+            <div class="bar bar--full"></div>
+            <span class="bar-label">100% del ancho real</span>
+          </div>
+          <div class="viewport-indicator">
+            <span class="vi-key">width</span>
+            <span class="vi-val">device-width</span>
+          </div>
+          <div class="viewport-indicator">
+            <span class="vi-key">initial-scale</span>
+            <span class="vi-val">1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card demo-bad">
+        <div class="demo-label demo-label--bad">Sin viewport meta</div>
+        <div class="demo-body">
+          <p class="demo-desc">El navegador simula 980px y aplica zoom-out. El contenido se ve muy pequeño.</p>
+          <div class="bar-group">
+            <div class="bar bar--partial"></div>
+            <span class="bar-label">~35% del ancho real (zoom out)</span>
+          </div>
+          <div class="viewport-indicator">
+            <span class="vi-key">viewport simulado</span>
+            <span class="vi-val vi-val--bad">980px</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="params-section">
+      <h2>Parámetros del atributo <code>content</code></h2>
+      <div class="params-grid">
+        <div class="param-card">
+          <code class="param-name">width=device-width</code>
+          <p>Usa el ancho físico del dispositivo como ancho del viewport.</p>
+        </div>
+        <div class="param-card">
+          <code class="param-name">initial-scale=1</code>
+          <p>No aplica zoom inicial. La página se muestra a escala 1:1.</p>
+        </div>
+        <div class="param-card">
+          <code class="param-name">minimum-scale=1</code>
+          <p>Evita que el usuario haga zoom-out más allá de la escala base.</p>
+        </div>
+        <div class="param-card param-card--warning">
+          <code class="param-name">user-scalable=no</code>
+          <p>⚠ Evitar: bloquea el zoom del usuario, violando WCAG 1.4.4 (Redimensionamiento de texto).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="note-section">
+      <h2>Regla práctica</h2>
+      <p>
+        Incluye siempre <code>width=device-width, initial-scale=1</code> en el
+        <code>&lt;head&gt;</code> antes de cualquier hoja de estilos. Sin esta línea,
+        las media queries con <code>max-width</code> o <code>min-width</code> no se
+        evaluarán contra el viewport real del dispositivo.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>ISW-521 · Programación en Ambiente Web I · UTN</p>
+  </footer>
+
+</body>
+</html>

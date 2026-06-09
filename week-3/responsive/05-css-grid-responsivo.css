@@ -1,0 +1,240 @@
+/* ============================================================
+   05-css-grid-responsivo.css
+   Técnica 5: CSS Grid Responsivo
+   ISW-521 — Programación en Ambiente Web I — UTN
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background-color: #f5f6fa;
+}
+
+.page-header { background-color: #4a1d96; color: #fff; padding: 2rem 1rem; }
+.header-inner { max-width: 860px; margin: 0 auto; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: #7c3aed;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.page-header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.4rem; }
+.subtitle { font-size: 0.95rem; color: #c4b5fd; }
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+  background-color: #ede9fe;
+  color: #4c1d95;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.code-block {
+  background-color: #1e1e3f;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  background: none;
+  color: #c4b5fd;
+  font-size: 0.82rem;
+  padding: 0;
+  white-space: pre;
+}
+
+.code-block--mt { margin-top: 1rem; }
+
+h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: #1a1a2e; }
+
+.concept-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+.concept-card p { color: #4a5568; margin-bottom: 1rem; }
+
+.section-hint {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* --- Demo auto-fit --- */
+.demo-autofit {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+/* GRID RESPONSIVO SIN MEDIA QUERIES */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.grid-cell {
+  border-radius: 8px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.cell-a { background: #dbeafe; color: #1e40af; }
+.cell-b { background: #dcfce7; color: #166534; }
+.cell-c { background: #fef9c3; color: #713f12; }
+.cell-d { background: #f3e8ff; color: #5b21b6; }
+.cell-e { background: #fce7f3; color: #831843; }
+.cell-f { background: #ffedd5; color: #7c2d12; }
+
+/* --- Demo template-areas --- */
+.demo-areas {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+/* GRID CON TEMPLATE-AREAS — escritorio */
+.page-areas {
+  display: grid;
+  grid-template-areas:
+    "header  header"
+    "nav     nav"
+    "main    sidebar"
+    "footer  footer";
+  grid-template-columns: 1fr 180px;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 6px;
+}
+
+.area {
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+}
+
+.area-header  { grid-area: header;  background: #4a1d96; color: #fff; }
+.area-nav     { grid-area: nav;     background: #7c3aed; color: #fff; }
+.area-main    { grid-area: main;    background: #ede9fe; color: #4c1d95; min-height: 100px; }
+.area-sidebar { grid-area: sidebar; background: #ddd6fe; color: #4c1d95; min-height: 100px; }
+.area-footer  { grid-area: footer;  background: #1e1b4b; color: #c4b5fd; }
+
+/* --- auto-fit vs auto-fill --- */
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.diff-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.diff-name {
+  display: block;
+  font-size: 0.8rem;
+  background: #ede9fe;
+  color: #4c1d95;
+  padding: 3px 8px;
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+}
+
+.diff-visual {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 0.75rem;
+  padding: 8px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px dashed #cbd5e1;
+}
+
+.diff-visual--fit  { grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); }
+.diff-visual--fill { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
+
+.dv-cell {
+  background: #7c3aed;
+  color: #fff;
+  border-radius: 4px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.diff-card p { font-size: 0.85rem; color: #4a5568; line-height: 1.5; }
+
+.page-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+  margin-top: 2rem;
+}
+
+/* --- Media queries --- */
+@media (max-width: 680px) {
+  /* El template-areas pasa a una sola columna */
+  .page-areas {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .diff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header h1 {
+    font-size: 1.35rem;
+  }
+}

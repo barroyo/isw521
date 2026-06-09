@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Técnica 2 — Media Queries</title>
+  <link rel="stylesheet" href="02-media-queries.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="header-inner">
+      <span class="badge">Técnica 2 / 7</span>
+      <h1>Media Queries</h1>
+      <p class="subtitle">Aplica estilos condicionalmente según las características del dispositivo</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="concept-card">
+      <h2>¿Qué son las media queries?</h2>
+      <p>
+        Una <code>@media</code> query envuelve un bloque de CSS que solo se aplica
+        cuando se cumple una condición sobre el medio: ancho del viewport, orientación,
+        resolución de pantalla o preferencias del sistema operativo.
+      </p>
+      <pre class="code-block"><code>@media (min-width: 768px) {
+  /* estos estilos solo aplican cuando el viewport es ≥ 768px */
+  .sidebar { display: block; }
+}</code></pre>
+    </section>
+
+    <section class="breakpoints-section">
+      <h2>Breakpoints comunes</h2>
+      <div class="breakpoints">
+        <div class="bp bp-xs">
+          <div class="bp-icon">📱</div>
+          <div class="bp-info">
+            <code class="bp-query">max-width: 480px</code>
+            <span class="bp-name">Móvil pequeño</span>
+          </div>
+        </div>
+        <div class="bp bp-sm">
+          <div class="bp-icon">📲</div>
+          <div class="bp-info">
+            <code class="bp-query">min-width: 481px</code>
+            <span class="bp-name">Móvil grande</span>
+          </div>
+        </div>
+        <div class="bp bp-md">
+          <div class="bp-icon">📟</div>
+          <div class="bp-info">
+            <code class="bp-query">min-width: 768px</code>
+            <span class="bp-name">Tablet</span>
+          </div>
+        </div>
+        <div class="bp bp-lg">
+          <div class="bp-icon">💻</div>
+          <div class="bp-info">
+            <code class="bp-query">min-width: 1024px</code>
+            <span class="bp-name">Escritorio</span>
+          </div>
+        </div>
+        <div class="bp bp-xl">
+          <div class="bp-icon">🖥️</div>
+          <div class="bp-info">
+            <code class="bp-query">min-width: 1280px</code>
+            <span class="bp-name">Escritorio amplio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2>Demo: layout que cambia con el viewport</h2>
+      <p class="section-hint">Redimensiona la ventana del navegador para ver cómo reacciona este layout.</p>
+      <div class="responsive-layout">
+        <aside class="layout-sidebar">
+          <p>Sidebar</p>
+          <p class="sidebar-note">Visible solo en tablet+</p>
+        </aside>
+        <div class="layout-main">
+          <div class="content-block content-block-a">Bloque A</div>
+          <div class="content-block content-block-b">Bloque B</div>
+          <div class="content-block content-block-c">Bloque C</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="types-section">
+      <h2>Otros tipos de media queries</h2>
+      <div class="types-grid">
+        <div class="type-card">
+          <code class="type-query">@media (orientation: landscape)</code>
+          <p>Se aplica cuando el dispositivo está en modo horizontal.</p>
+        </div>
+        <div class="type-card">
+          <code class="type-query">@media (prefers-color-scheme: dark)</code>
+          <p>Se activa cuando el usuario tiene el modo oscuro del sistema activado.</p>
+        </div>
+        <div class="type-card">
+          <code class="type-query">@media (prefers-reduced-motion: reduce)</code>
+          <p>Respeta la preferencia de reducir animaciones. Clave para WCAG 2.3.3.</p>
+        </div>
+        <div class="type-card">
+          <code class="type-query">@media print</code>
+          <p>Estilos que solo aplican al imprimir la página.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="code-section">
+      <h2>Código completo del demo</h2>
+      <pre class="code-block"><code>/* Base: móvil — una sola columna */
+.responsive-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.layout-sidebar {
+  display: none; /* oculto en móvil */
+}
+
+/* Tablet: mostrar sidebar en fila */
+@media (min-width: 768px) {
+  .responsive-layout {
+    flex-direction: row;
+  }
+  .layout-sidebar {
+    display: block;
+    width: 200px;
+    flex-shrink: 0;
+  }
+}
+
+/* Escritorio: sidebar más ancha */
+@media (min-width: 1024px) {
+  .layout-sidebar {
+    width: 260px;
+  }
+
+  .content-block {
+    flex: 1 0 200px;
+  }
+}
+@media (min-width: 1280px) {
+  .layout-sidebar {
+    width: 260px;
+  }
+}</code></pre>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>ISW-521 · Programación en Ambiente Web I · UTN</p>
+  </footer>
+
+</body>
+</html>

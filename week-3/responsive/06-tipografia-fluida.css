@@ -1,0 +1,229 @@
+/* ============================================================
+   06-tipografia-fluida.css
+   Técnica 6: Tipografía Fluida con clamp()
+   ISW-521 — Programación en Ambiente Web I — UTN
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background-color: #f5f6fa;
+}
+
+.page-header { background-color: #065f46; color: #fff; padding: 2rem 1rem; }
+.header-inner { max-width: 860px; margin: 0 auto; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: #059669;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.page-header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.4rem; }
+.subtitle { font-size: 0.95rem; color: #6ee7b7; }
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.code-block {
+  background-color: #0f2b1e;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  background: none;
+  color: #6ee7b7;
+  font-size: 0.82rem;
+  padding: 0;
+  white-space: pre;
+}
+
+h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: #1a1a2e; }
+
+.concept-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+.concept-card p { color: #4a5568; margin-bottom: 1rem; }
+
+.section-hint, .section-desc {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* --- Demo tipografía fluida --- */
+.demo-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.article-demo {
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: #f8fafc;
+}
+
+/* TIPOGRAFÍA FLUIDA — el núcleo de esta técnica */
+.fluid-h1 {
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #065f46;
+  margin-bottom: 0.5rem;
+}
+
+.fluid-h2 {
+  font-size: clamp(1.15rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  color: #047857;
+  margin-bottom: 0.75rem;
+}
+
+.fluid-body {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  line-height: clamp(1.5, 1.5vw + 1.2, 1.75);
+  color: #4a5568;
+}
+
+/* --- Tabla de escala --- */
+.scale-table {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.scale-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 100px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.scale-row:last-child { border-bottom: none; }
+
+.scale-row--header {
+  background: #f8fafc;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.scale-sample {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.scale-h1    { font-size: clamp(1.1rem, 2vw, 1.5rem); }
+.scale-h2    { font-size: clamp(1rem, 1.5vw, 1.2rem); }
+.scale-h3    { font-size: clamp(0.95rem, 1.3vw, 1.1rem); }
+.scale-p     { font-size: clamp(0.85rem, 1.2vw, 1rem); }
+.scale-small { font-size: clamp(0.78rem, 1vw, 0.875rem); }
+
+.scale-row code {
+  font-size: 0.78rem;
+}
+
+.scale-range {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+/* --- Espaciado fluido --- */
+.spacing-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+/* --- Comparación --- */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.comp-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.comp-card--new {
+  border-color: #86efac;
+}
+
+.comp-label {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.comp-label--old {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.comp-label--new {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.page-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .comparison-grid { grid-template-columns: 1fr; }
+  .scale-row { grid-template-columns: 90px 1fr; }
+  .scale-range { display: none; }
+  .page-header h1 { font-size: 1.35rem; }
+}
